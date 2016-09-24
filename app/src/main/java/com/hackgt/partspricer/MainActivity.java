@@ -24,10 +24,20 @@ public class MainActivity extends AppCompatActivity implements PartsFragment.OnF
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 Fragment fragment;
-                if (tabId == R.id.tab_parts) { fragment = new PartsFragment(); }
-                else { fragment = new Fragment(); }
+                int      inAnim;
+                int      outAnim;
+                if (tabId == R.id.tab_parts) {
+                    fragment = new PartsFragment();
+                    inAnim = R.animator.slide_out_right;
+                    outAnim = R.animator.slide_in_left;
+                }
+                else {
+                    fragment = new PartsFragment();
+                    inAnim = R.animator.slide_out_right;
+                    outAnim = R.animator.slide_out_right;
+                }
 
-                getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+                getFragmentManager().beginTransaction().setCustomAnimations(inAnim, outAnim).replace(R.id.fragment_container, fragment).commit();
             }
         });
     }
