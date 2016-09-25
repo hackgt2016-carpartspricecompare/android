@@ -75,7 +75,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
         holder.model.setText(mDataset.get(position).getModel());
         holder.year.setText(mDataset.get(position).getYear());
         holder.manufacturer.setText(mDataset.get(position).getManufacturer());
-        holder.onstartStatus.setText(mDataset.get(position).getOnstartStatus());
+        holder.onstartStatus.setText(mDataset.get(position).getOnstarStatus());
     }
 
     @Override
