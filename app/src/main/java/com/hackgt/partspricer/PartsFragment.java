@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class PartsFragment extends android.app.Fragment {
@@ -21,24 +19,28 @@ public class PartsFragment extends android.app.Fragment {
         // Required empty public constructor
     }
 
-    private class CategoryViewHolder extends RecyclerView.ViewHolder {
+    private class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView categoryTitle;
-        private final ListView partCategoryItemsLV;
         private       Category category;
 
         public CategoryViewHolder (View itemView) {
             super(itemView);
 
             categoryTitle = (TextView) itemView.findViewById(R.id.part_category_title);
-            partCategoryItemsLV = (ListView) itemView.findViewById(R.id.part_category_items_LV);
+            itemView.setOnClickListener(this);
         }
 
         public void setCategory (Category category) {
             this.category = category;
 
             categoryTitle.setText(category.getName());
-            partCategoryItemsLV.setAdapter(new ArrayAdapter<>(partCategoryItemsLV.getContext(), android.R.layout.simple_list_item_1, category.getParts()));
-            partCategoryItemsLV.invalidate();
+        }
+
+        @Override
+        public void onClick (View v) {
+//            Intent intent = new Intent(this, CategoryDetailActivity.class);
+//            intent.putExtra("category", category);
+//            startActivity(intent);
         }
     }
 
@@ -76,7 +78,6 @@ public class PartsFragment extends android.app.Fragment {
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -98,17 +99,6 @@ public class PartsFragment extends android.app.Fragment {
         super.onDetach();
         mListener = null;
     }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

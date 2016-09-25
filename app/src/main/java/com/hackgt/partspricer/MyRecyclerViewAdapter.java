@@ -13,16 +13,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyRecyclerViewAdapter extends RecyclerView
-        .Adapter<MyRecyclerViewAdapter
-        .DataObjectHolder> {
+public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
     private ArrayList<Car> mDataset;
     private static MyClickListener myClickListener;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
+    public static class DataObjectHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView title;
         TextView vin;
         TextView make;
         TextView model;
@@ -33,6 +30,7 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
         public DataObjectHolder(View itemView) {
             super(itemView);
+            title = (TextView) itemView.findViewById(R.id.title);
             vin = (TextView) itemView.findViewById(R.id.textView);
             make = (TextView) itemView.findViewById(R.id.textView2);
             model =(TextView) itemView.findViewById(R.id.textView3);
@@ -70,12 +68,15 @@ public class MyRecyclerViewAdapter extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        holder.vin.setText(mDataset.get(position).getVin());
-        holder.make.setText(mDataset.get(position).getMake());
-        holder.model.setText(mDataset.get(position).getModel());
-        holder.year.setText(mDataset.get(position).getYear());
-        holder.manufacturer.setText(mDataset.get(position).getManufacturer());
-        holder.onstartStatus.setText(mDataset.get(position).getOnstarStatus());
+        Car car = mDataset.get(position);
+
+        holder.title.setText(car.getMake() + " " + car.getModel());
+        holder.vin.setText(car.getVin());
+        holder.make.setText(car.getMake());
+        holder.model.setText(car.getModel());
+        holder.year.setText(String.valueOf(car.getYear()));
+        holder.manufacturer.setText(car.getManufacturer());
+        holder.onstartStatus.setText(car.getOnstarStatus());
     }
 
     @Override

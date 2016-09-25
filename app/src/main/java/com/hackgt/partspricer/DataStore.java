@@ -40,8 +40,8 @@ public class DataStore {
         partCategories.add(new Category("Blade", subPartCategoriesBlade));
 
         ArrayList<Part> subPartCategoriesCap = new ArrayList<>();
-        subPartCategoriesCap.add(new Part());
-        partCategories.add(new Category("Caps ", subPartCategoriesCap));
+		subPartCategoriesCap.add(new Part("Radiant Caps", "Caps", "2JKL3K4"));
+		partCategories.add(new Category("Caps", subPartCategoriesCap));
 
 
     }

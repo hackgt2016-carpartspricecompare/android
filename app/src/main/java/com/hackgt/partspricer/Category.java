@@ -1,11 +1,12 @@
 package com.hackgt.partspricer;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Pranathi on 9/24/2016.
  */
-public class Category {
+public class Category implements Serializable {
 	private String          name;
 	private ArrayList<Part> parts;
 
