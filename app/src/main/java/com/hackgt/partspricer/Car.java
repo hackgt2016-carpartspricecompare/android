@@ -1,36 +1,39 @@
 package com.hackgt.partspricer;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by Sri on 9/24/2016.
  */
 
 public class Car {
-
-    private int vin;
+    private String onstarStatus;
     private String make;
     private String model;
-    private int year;
+    private String vin;
     private String manufacturer;
-    private String onstartStatus;
-    private String url;
+    private int    year;
 
-    Car(int vin, String make, String model, int year, String manufacturer,
-        String onstartStatus, String url){
+    Car (String vin, String make, String model, int year, String manufacturer, String onstarStatus) {
 
         this.vin = vin;
         this.make = make;
         this.model = model;
         this.year = year;
         this.manufacturer = manufacturer;
-        this.onstartStatus = onstartStatus;
-        this.url = url;
+        this.onstarStatus = onstarStatus;
     }
 
-    public int getVin() {
+    public Car (JSONObject o) throws JSONException {
+        this(o.getString("vin"), o.getString("make"), o.getString("model"), Integer.valueOf(o.getString("year")), o.getString("manufacturer"), o.getString("onstarStatus"));
+    }
+
+    public String getVin () {
         return vin;
     }
 
-    public void setVin(int vin) {
+    public void setVin (String vin) {
         this.vin = vin;
     }
 
@@ -66,19 +69,11 @@ public class Car {
         this.manufacturer = manufacturer;
     }
 
-    public String getOnstartStatus() {
-        return onstartStatus;
+    public String getOnstarStatus () {
+        return onstarStatus;
     }
 
-    public void setOnstartStatus(String onstartStatus) {
-        this.onstartStatus = onstartStatus;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setOnstarStatus (String onstarStatus) {
+        this.onstarStatus = onstarStatus;
     }
 }
