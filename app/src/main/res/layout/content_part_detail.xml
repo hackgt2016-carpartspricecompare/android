@@ -14,31 +14,31 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            tools:text="Part Number:"
-            android:padding="10dp"
-            android:textAppearance="?android:textAppearanceLarge"/>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Part Category:"
+        android:padding="10dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:id="@+id/partCategory" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            tools:text="Part Category:"
-            android:padding="10dp"
-            android:textAppearance="?android:textAppearanceLarge"/>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Part Number:"
+        android:padding="10dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:id="@+id/partNumber" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5"
-            tools:text="Part Price:"
-            android:padding="10dp"
-            android:textAppearance="?android:textAppearanceLarge"/>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Part Price:"
+        android:padding="10dp"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:id="@+id/partPrice" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

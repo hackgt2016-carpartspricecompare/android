@@ -8,7 +8,7 @@ public class Part {
     private String name;
     private String category;
     private String number;
-    private String price;
+    private double price;
 
     public Part () {
     }
@@ -24,7 +24,7 @@ public class Part {
         this.number = number;
     }
 
-    public Part (String name, String category, String number, String price) {
+    public Part (String name, String category, String number, double price) {
         this.name = name;
         this.category = category;
         this.number = number;
@@ -55,11 +55,11 @@ public class Part {
         this.number = number;
     }
 
-    public String getPrice () {
+    public double getPrice () {
         return price;
     }
 
-    public void setPrice (String price) {
+    public void setPrice (double price) {
         this.price = price;
     }
 }

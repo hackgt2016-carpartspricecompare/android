@@ -6,14 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
 
-public class PartDetailActivity extends AppCompatActivity {
+public class CategoryDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_part_detail);
+        setContentView(R.layout.activity_category_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -25,5 +24,8 @@ public class PartDetailActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Category category = (Category) getIntent().getSerializableExtra("category");
+
     }
 }

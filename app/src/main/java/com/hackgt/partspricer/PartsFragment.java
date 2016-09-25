@@ -1,6 +1,7 @@
 package com.hackgt.partspricer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,9 +39,9 @@ public class PartsFragment extends android.app.Fragment {
 
         @Override
         public void onClick (View v) {
-//            Intent intent = new Intent(this, CategoryDetailActivity.class);
-//            intent.putExtra("category", category);
-//            startActivity(intent);
+            Intent intent = new Intent(v.getContext(), CategoryDetailActivity.class);
+            intent.putExtra("category", category);
+            startActivity(intent);
         }
     }
 

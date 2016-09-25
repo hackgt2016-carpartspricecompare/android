@@ -3,10 +3,6 @@ package com.hackgt.partspricer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Sri on 9/24/2016.
- */
-
 public class Car {
     private String onstarStatus;
     private String make;

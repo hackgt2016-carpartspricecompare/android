@@ -24,10 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".PartDetailActivity"
             android:label="@string/title_activity_part_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CategoryDetailActivity"
+            android:label="@string/title_activity_category_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
