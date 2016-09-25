@@ -13,6 +13,11 @@ public class Part {
     public Part () {
     }
 
+    @Override
+    public String toString () {
+        return name;
+    }
+
     public Part (String name, String category, String number) {
         this.name = name;
         this.category = category;

@@ -3,69 +3,77 @@ package com.hackgt.partspricer;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PartsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PartsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PartsFragment extends android.app.Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView                  partCategoryRV;
 
     public PartsFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PartsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PartsFragment newInstance(String param1, String param2) {
-        PartsFragment fragment = new PartsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    private class CategoryViewHolder extends RecyclerView.ViewHolder {
+        private final TextView categoryTitle;
+        private final ListView partCategoryItemsLV;
+        private       Category category;
+
+        public CategoryViewHolder (View itemView) {
+            super(itemView);
+
+            categoryTitle = (TextView) itemView.findViewById(R.id.part_category_title);
+            partCategoryItemsLV = (ListView) itemView.findViewById(R.id.part_category_items_LV);
+        }
+
+        public void setCategory (Category category) {
+            this.category = category;
+
+            categoryTitle.setText(category.getName());
+            partCategoryItemsLV.setAdapter(new ArrayAdapter<>(partCategoryItemsLV.getContext(), android.R.layout.simple_list_item_1, category.getParts()));
+            partCategoryItemsLV.invalidate();
+        }
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parts, container, false);
+        View view = inflater.inflate(R.layout.fragment_parts, container, false);
+
+        partCategoryRV = (RecyclerView) view.findViewById(R.id.part_category_RV);
+        partCategoryRV.setLayoutManager(new LinearLayoutManager(partCategoryRV.getContext()));
+        partCategoryRV.setAdapter(new RecyclerView.Adapter<CategoryViewHolder>() {
+            @Override
+            public CategoryViewHolder onCreateViewHolder (ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parts_category_card, parent, false);
+                return new CategoryViewHolder(view);
+            }
+
+            @Override
+            public void onBindViewHolder (CategoryViewHolder holder, int position) {
+                holder.setCategory(DataStore.getPartCategories().get(position));
+            }
+
+            @Override
+            public int getItemCount () {
+                return DataStore.getPartCategories().size();
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,8 +89,7 @@ public class PartsFragment extends android.app.Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 

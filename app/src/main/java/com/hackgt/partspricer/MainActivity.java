@@ -29,11 +29,6 @@ public class MainActivity extends AppCompatActivity implements PartsFragment.OnF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        android.app.Fragment partsFragment = new com.hackgt.partspricer.PartsFragment();
-//        FrameLayout fragmentContainer = (FrameLayout) findViewById(R.id.fragment_container);
-
-//        getFragmentManager().beginTransaction().add(R.id.fragment_container, partsFragment).commit();
-
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override

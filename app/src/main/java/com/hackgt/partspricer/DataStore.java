@@ -17,7 +17,11 @@ public class DataStore {
 	}
     private static ArrayList<Category> partCategories;
 
-    static{
+	public static ArrayList<Category> getPartCategories () {
+		return partCategories;
+	}
+
+	static{
         partCategories = new ArrayList<>();
 
 
