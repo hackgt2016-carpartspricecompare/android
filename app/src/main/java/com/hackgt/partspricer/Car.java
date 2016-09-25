@@ -6,15 +6,14 @@ package com.hackgt.partspricer;
 
 public class Car {
 
-    private int vin;
+    private String vin;
     private String make;
     private String model;
     private int year;
     private String manufacturer;
     private String onstartStatus;
-    private String url;
 
-    Car(int vin, String make, String model, int year, String manufacturer,
+    Car(String vin, String make, String model, int year, String manufacturer,
         String onstartStatus, String url){
 
         this.vin = vin;
@@ -23,14 +22,13 @@ public class Car {
         this.year = year;
         this.manufacturer = manufacturer;
         this.onstartStatus = onstartStatus;
-        this.url = url;
     }
 
-    public int getVin() {
+    public String getVin() {
         return vin;
     }
 
-    public void setVin(int vin) {
+    public void setVin(String vin) {
         this.vin = vin;
     }
 
@@ -74,11 +72,4 @@ public class Car {
         this.onstartStatus = onstartStatus;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-}
+   }
