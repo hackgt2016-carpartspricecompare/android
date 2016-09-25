@@ -71,12 +71,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         Car car = mDataset.get(position);
 
         holder.title.setText(car.getMake() + " " + car.getModel());
-        holder.vin.setText(car.getVin());
-        holder.make.setText(car.getMake());
-        holder.model.setText(car.getModel());
-        holder.year.setText(String.valueOf(car.getYear()));
-        holder.manufacturer.setText(car.getManufacturer());
-        holder.onstartStatus.setText(car.getOnstarStatus());
+        holder.vin.setText("VIN: " + car.getVin());
+        holder.make.setText("Make: " + car.getMake());
+        holder.model.setText("Model: " + car.getModel());
+        holder.year.setText("Year: " + String.valueOf(car.getYear()));
+        holder.manufacturer.setText("Manufacturer: " + car.getManufacturer());
+        holder.onstartStatus.setText("OnStar: " + car.getOnstarStatus());
     }
 
     @Override
