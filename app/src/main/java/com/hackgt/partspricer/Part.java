@@ -1,10 +1,11 @@
 package com.hackgt.partspricer;
 
+import java.io.Serializable;
+
 /**
  * Created by Pranathi on 9/24/2016.
  */
-
-public class Part {
+public class Part implements Serializable {
     private String name;
     private String category;
     private String number;

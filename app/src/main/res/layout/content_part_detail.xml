@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.hackgt.partspricer.PartDetailActivity"
-    tools:showIn="@layout/activity_part_detail">
+                                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                                            xmlns:tools="http://schemas.android.com/tools"
+                                            android:layout_height="match_parent"
+                                            android:layout_width="match_parent"
+                                            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                            tools:context="com.hackgt.partspricer.PartDetailActivity"
+                                            tools:showIn="@layout/activity_part_detail">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Part Category:"
-        android:padding="10dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:id="@+id/partCategory" />
+        <TextView
+                android:id="@+id/partCategory"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textAppearance="?android:textAppearanceLarge"
+                tools:text="Part Category:" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Part Number:"
-        android:padding="10dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:id="@+id/partNumber" />
+        <TextView
+                android:id="@+id/partNumber"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textAppearance="?android:textAppearanceLarge"
+                tools:text="Part Number:" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Part Price:"
-        android:padding="10dp"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:id="@+id/partPrice" />
+        <TextView
+                android:id="@+id/partPrice"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textAppearance="?android:textAppearanceLarge"
+                tools:text="Part Price:" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

@@ -1,11 +1,8 @@
 package com.hackgt.partspricer;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.TextView;
 
 public class PartDetailActivity extends AppCompatActivity {
@@ -17,13 +14,16 @@ public class PartDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Part part = (Part) getIntent().getSerializableExtra("part");
+        setTitle(part.getName());
+
+        TextView partPrice = (TextView) findViewById(R.id.partPrice);
+        partPrice.setText(String.format("Part Price: %s", part.getPrice() == 0 ? "Unknown" : String.format("$%s", part.getPrice())));
+
+        TextView partNumber = (TextView) findViewById(R.id.partNumber);
+        partNumber.setText(String.format("Part Number: %s", part.getNumber()));
+
+        TextView partCat = (TextView) findViewById(R.id.partCategory);
+        partCat.setText(String.format("Part Category: %s", part.getCategory()));
     }
 }
