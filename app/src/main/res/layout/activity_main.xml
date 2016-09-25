@@ -7,10 +7,19 @@
         android:layout_width="match_parent"
         tools:context="com.hackgt.partspricer.MainActivity">
 
+    <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+    </FrameLayout>
+
     <com.roughike.bottombar.BottomBar
             android:id="@+id/bottomBar"
             android:layout_height="60dp"
             android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@color/colorAccent"
             android:layout_alignParentBottom="true"
             app:bb_behavior="shifting|shy"
             app:bb_tabXmlResource="@xml/bottombar_tabs" />

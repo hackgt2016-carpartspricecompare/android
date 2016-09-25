@@ -18,11 +18,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,14 +77,39 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 		@Override
 		protected Boolean doInBackground (Void... params) {
-			// TODO: attempt authentication against a network service.
-
+			Pair[] headers = new Pair[] { new Pair<>("Authorization", "Basic bDd4eGIzYjllNGNmOGRkZDQ5OWRiZWU4NDZkY2U3OWI1OTVjOmIyODY1MDRhMzM5NjQ0Mjg4ZjBhMGUwODVjOTNlNWVk"),
+										  new Pair<>("Accept", "application/json") };
+			String[] jsonsFromUrls = WebUtils.getJsonsFromUrls(headers, "https://developer.gm.com/api/v1/oauth/access_token?grant_type=client_credentials");
+			String   json          = "{}";
+			if (jsonsFromUrls.length > 0) { json = jsonsFromUrls[0]; }
+			String access_token = "9aa1c555-faa6-49d8-852d-9c4c28ca69db";        // 		AKA - JUNK access_token
 			try {
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				return false;
+				access_token = (String) new JSONObject(json).get("access_token");
+			} catch (JSONException e) {
+				e.printStackTrace();
 			}
+			Pair<String, String>[] newHeaders = new Pair[] { new Pair<>("Authorization", "Bearer " + access_token),
+															 new Pair<>("Accept", "application/json") };
+			String[] realJsonsFromUrls = WebUtils.getJsonsFromUrls(newHeaders, "https://developer.gm.com/api/v1/account/vehicles");
+			String   realJson          = "{}";
+			if (realJsonsFromUrls.length > 0) { realJson = realJsonsFromUrls[0]; }
+
+			JSONArray vehiclesArray = new JSONArray();
+			try {
+				vehiclesArray = new JSONObject(realJson).getJSONObject("vehicles").getJSONArray("vehicle");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+
+			ArrayList<Car> cars = new ArrayList<>();
+			for (int i = 0; i < vehiclesArray.length(); i++) {
+				try {
+					cars.add(new Car((JSONObject) vehiclesArray.get(i)));
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
+			DataStore.setCars(cars);
 
 			for (String credential : DUMMY_CREDENTIALS) {
 				String[] pieces = credential.split(":");
@@ -90,7 +119,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 				}
 			}
 
-			// TODO: register the new account here.
 			return true;
 		}
 
